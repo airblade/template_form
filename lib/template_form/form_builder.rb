@@ -1,3 +1,4 @@
+require 'template_form/checkbox_input'
 require 'template_form/select_input'
 require 'template_form/text_input'
 

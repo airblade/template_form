@@ -1,7 +1,7 @@
 require 'tilt'
 
 module TemplateForm
-  class SelectInput
+  class CheckboxInput
 
     def initialize(builder, attribute_name, options)
       @builder = builder
@@ -14,16 +14,13 @@ module TemplateForm
     end
 
     def render
-      file      = Dir["#{Rails.root}/app/forms/#{form_type}/select_input.html.*"].first
+      file      = Dir["#{Rails.root}/app/forms/#{form_type}/checkbox_input.html.*"].first
       template  = Tilt.new file
       template.render(
         builder,
         attribute_name: attribute_name,
         options:        options,
-        errors:         builder.object.errors,
-        collection:     collection,
-        label_method:   label_method,
-        value_method:   value_method
+        errors:         builder.object.errors
       ).html_safe
     end
 
@@ -33,20 +30,6 @@ module TemplateForm
 
     def form_type
       options.delete(:form_type) || builder.form_type
-    end
-
-    def collection
-      options.delete :collection
-    end
-
-    def label_method
-      # assume collection's elements are arrays
-      options.delete(:label_method) || :first
-    end
-
-    def value_method
-      # assume collection's elements are arrays
-      options.delete(:value_method) || :last
     end
 
   end

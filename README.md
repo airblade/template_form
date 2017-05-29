@@ -1,5 +1,26 @@
 # TemplateForm
 
+TODO:
+
+- required / optional fields
+- configure default :form_type
+- configure path to templates
+  e.g. app/forms
+  look in gem if no user form found
+- custom inputs
+
+
+
+
+
+
+
+
+
+
+
+
+
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/template_form`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
