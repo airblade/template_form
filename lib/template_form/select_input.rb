@@ -36,17 +36,33 @@ module TemplateForm
     end
 
     def collection
-      options.delete :collection
+      @collection ||= options.delete(:collection)
     end
 
     def label_method
       # assume collection's elements are arrays
-      options.delete(:label_method) || :first
+      # options.delete(:label_method) || :first
+
+      return options.delete(:label_method) if options.has_key? :label_method
+
+      case collection.first
+      when String then :to_s
+      when Array  then :first
+      else raise NotImplementedError
+      end
     end
 
     def value_method
       # assume collection's elements are arrays
-      options.delete(:value_method) || :last
+      # options.delete(:value_method) || :last
+
+      return options.delete(:value_method) if options.has_key? :value_method
+
+      case collection.first
+      when String then :to_s
+      when Array  then :last
+      else raise NotImplementedError
+      end
     end
 
   end
