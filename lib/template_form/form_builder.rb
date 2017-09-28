@@ -1,6 +1,7 @@
 require 'template_form/checkbox_input'
 require 'template_form/select_input'
 require 'template_form/text_input'
+require 'template_form/textarea_input'
 
 module TemplateForm
   class FormBuilder < ActionView::Helpers::FormBuilder
@@ -28,6 +29,7 @@ module TemplateForm
     def input_for(attribute_type)
       case attribute_type
       when :string  then TextInput
+      when :text    then TextareaInput
       when :boolean then CheckboxInput
       when :select  then SelectInput
       end
