@@ -20,7 +20,8 @@ module TemplateForm
         builder,
         attribute_name: attribute_name,
         options:        options,
-        errors:         builder.object.errors
+        errors:         builder.object.errors,
+        data:           data
       ).html_safe
     end
 
@@ -30,6 +31,13 @@ module TemplateForm
 
     def form_type
       options.delete(:form_type) || builder.form_type
+    end
+
+    def data
+      return {} unless options.has_key? :data
+
+      attrs = options.delete :data
+      attrs.map { |k,v| ["data-#{k}", v] }.to_h
     end
 
   end

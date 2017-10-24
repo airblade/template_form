@@ -23,7 +23,8 @@ module TemplateForm
         errors:         builder.object.errors,
         collection:     collection,
         label_method:   label_method,
-        value_method:   value_method
+        value_method:   value_method,
+        data:           data
       ).html_safe
     end
 
@@ -63,6 +64,13 @@ module TemplateForm
       when Array  then :last
       else raise NotImplementedError
       end
+    end
+
+    def data
+      return {} unless options.has_key? :data
+
+      attrs = options.delete :data
+      attrs.map { |k,v| ["data-#{k}", v] }.to_h
     end
 
   end
