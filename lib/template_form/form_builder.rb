@@ -1,4 +1,5 @@
 require 'template_form/checkbox_input'
+require 'template_form/grouped_select_input'
 require 'template_form/select_input'
 require 'template_form/text_input'
 require 'template_form/textarea_input'
@@ -32,6 +33,7 @@ module TemplateForm
       when :text    then TextareaInput
       when :boolean then CheckboxInput
       when :select  then SelectInput
+      when :grouped_select then GroupedSelectInput
       end
     end
 
