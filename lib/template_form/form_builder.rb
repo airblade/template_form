@@ -16,10 +16,10 @@ module TemplateForm
 
 
     def input(attribute_name, options = {})
-      attribute_type = options.fetch :as { |_|
+      attribute_type = options.delete(:as) || (
         column = @object.type_for_attribute attribute_name.to_s
         column.type
-      }
+      )
 
       input_for(attribute_type).new(self, attribute_name, options).render
     end
