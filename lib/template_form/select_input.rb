@@ -9,6 +9,8 @@ module TemplateForm
       @builder = builder
       @attribute_name = attribute_name
 
+      @form_type = options.delete(:form_type) || builder.form_type
+
       @collection = options.delete(:collection).to_a
 
       @label_text = options.delete(:label) || ''
@@ -56,6 +58,7 @@ module TemplateForm
     private
 
     attr_reader *%i[
+      form_type
       builder
       attribute_name
       collection
@@ -72,10 +75,6 @@ module TemplateForm
       value_method
       text_method
     ]
-
-    def form_type
-      options.delete(:form_type) || builder.form_type
-    end
 
     def default_text_method
       case collection.first
