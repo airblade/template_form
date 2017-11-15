@@ -14,8 +14,6 @@ module TemplateForm
       @form_type = options.delete(:form_type) || TemplateForm.form_type
     end
 
-
-
     def input(attribute_name, options = {})
       attribute_type = options.delete(:as) || (
         column = @object.type_for_attribute attribute_name.to_s
