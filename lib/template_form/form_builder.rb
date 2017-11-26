@@ -11,7 +11,11 @@ module TemplateForm
 
     def initialize(*)
       super
-      @form_type = options.delete(:form_type) || TemplateForm.form_type
+      # Do not remove `:form_type` from `options`.  It has to stay so
+      # When `fields_for()` instantiates a new form builder for each
+      # associated record, the second and subsequent ones have the
+      # correct form type.
+      @form_type = options[:form_type] || TemplateForm.form_type
     end
 
     def input(attribute_name, options = {})
