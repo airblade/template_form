@@ -81,7 +81,7 @@ module TemplateForm
       when String then :to_s
       when Array  then :first
       when nil    then :to_s  # it won't be called because collection is empty
-      else raise NotImplementedError
+      else raise NotImplementedError, "first collection element is a #{collection.first.class.name}"
       end
     end
 
@@ -90,7 +90,7 @@ module TemplateForm
       when String then :to_s
       when Array  then :last
       when nil    then :to_s  # it won't be called because collection is empty
-      else raise NotImplementedError
+      else raise NotImplementedError, "first collection element is a #{collection.first.class.name}"
       end
     end
   end
