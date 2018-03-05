@@ -3,7 +3,7 @@ require 'tilt'
 module TemplateForm
   class GroupedSelectInput
 
-    OPTION_KEYS = %i[ include_blank prompt index disabled ]
+    OPTION_KEYS = %i[ include_blank prompt index disabled selected ]
 
     def initialize(builder, attribute_name, options)
       @builder = builder
