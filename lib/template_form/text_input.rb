@@ -23,8 +23,7 @@ module TemplateForm
     end
 
     def render
-      file      = Dir["#{Rails.root}/app/forms/#{form_type}/text_input.html.*"].first
-      template  = Tilt.new file
+      template  = Tilt.new template_file
       template.render(
         builder,
         attribute_name: attribute_name,
@@ -55,6 +54,10 @@ module TemplateForm
 
       options
     ]
+
+    def template_file
+      Dir["#{Rails.root}/app/forms/#{form_type}/text_input.html.*"].first
+    end
 
   end
 end
