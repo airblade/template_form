@@ -4,6 +4,7 @@ require 'template_form/select_input'
 require 'template_form/text_input'
 require 'template_form/textarea_input'
 require 'template_form/date_input'
+require 'template_form/file_input'
 
 module TemplateForm
   class FormBuilder < ActionView::Helpers::FormBuilder
@@ -36,6 +37,7 @@ module TemplateForm
       when :text    then TextareaInput
       when :date    then DateInput
       when :boolean then CheckboxInput
+      when :file    then FileInput
       when :select  then SelectInput
       when :grouped_select then GroupedSelectInput
       end
