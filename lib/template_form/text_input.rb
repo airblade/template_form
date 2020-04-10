@@ -1,7 +1,7 @@
 require 'tilt'
 
 module TemplateForm
-  class TextInput
+  class TextInput < BaseInput
 
     def initialize(builder, attribute_name, options)
       @builder = builder
@@ -54,10 +54,6 @@ module TemplateForm
 
       options
     ]
-
-    def template_file
-      Dir["#{Rails.root}/app/forms/#{form_type}/text_input.html.*"].first
-    end
 
   end
 end

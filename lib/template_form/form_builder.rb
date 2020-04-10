@@ -1,3 +1,5 @@
+require 'template_form/errors'
+require 'template_form/base_input'
 require 'template_form/checkbox_input'
 require 'template_form/grouped_select_input'
 require 'template_form/select_input'

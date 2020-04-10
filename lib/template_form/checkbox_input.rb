@@ -1,7 +1,7 @@
 require 'tilt'
 
 module TemplateForm
-  class CheckboxInput
+  class CheckboxInput < BaseInput
 
     def initialize(builder, attribute_name, options)
       @builder = builder
@@ -23,8 +23,7 @@ module TemplateForm
     end
 
     def render
-      file      = Dir["#{Rails.root}/app/forms/#{form_type}/checkbox_input.html.*"].first
-      template  = Tilt.new file
+      template = Tilt.new template_file
       template.render(
         builder,
         attribute_name: attribute_name,

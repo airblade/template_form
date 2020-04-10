@@ -1,7 +1,7 @@
 require 'tilt'
 
 module TemplateForm
-  class GroupedSelectInput
+  class GroupedSelectInput < BaseInput
 
     OPTION_KEYS = %i[ include_blank prompt index disabled selected ]
 
@@ -34,8 +34,7 @@ module TemplateForm
     end
 
     def render
-      file      = Dir["#{Rails.root}/app/forms/#{form_type}/grouped_select_input.html.*"].first
-      template  = Tilt.new file
+      template = Tilt.new template_file
       template.render(
         builder,
         attribute_name: attribute_name,
