@@ -57,11 +57,10 @@ module TemplateForm
 
 
     def template_file
-      name = underscore demodulize(self.class.name)  # TemplateForm::TextInput -> text_input
+      name = self.class.name.demodulize.underscore  # TemplateForm::TextInput -> text_input
       path = "#{Rails.root}/app/forms/#{form_type}/#{name}.html.*"
       f = Dir[path].first
-      raise TemplateForm::MissingTemplateError, "no template found at #{path}" unless File.exist? f
-      f
+      f or raise TemplateForm::MissingTemplateError, "No template found at #{path}"
     end
 
   end
