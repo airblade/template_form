@@ -57,18 +57,8 @@ module TemplateForm
     private
 
     attr_reader *%i[
-      form_type
-      builder
-      attribute_name
       collection
 
-      label_text
-      label_options
-
-      hint_text
-      hint_options
-
-      options
       html_options
 
       value_method
