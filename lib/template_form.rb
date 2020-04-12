@@ -18,6 +18,3 @@ module TemplateForm
   end
 
 end
-
-# require 'template_form/railtie' if defined?(Rails)
-
