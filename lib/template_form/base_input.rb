@@ -1,3 +1,5 @@
+require 'pathname'
+
 module TemplateForm
   class BaseInput
 
@@ -63,9 +65,17 @@ module TemplateForm
 
     def template_file
       name = self.class.name.demodulize.underscore  # TemplateForm::TextInput -> text_input
-      path = "#{Rails.root}/app/forms/#{form_type}/#{name}.html.*"
-      f = Dir[path].first
-      f or raise TemplateForm::MissingTemplateError, "No template found at #{path}"
+      f = paths(name).map { |p| Pathname.glob(p).first }.detect &:itself
+      f or raise TemplateForm::MissingTemplateError, "No template found at: #{paths(name).join ', '}"
+    end
+
+    def paths(name)
+      locations.map { |p| p / form_type.to_s / "#{name}.html.*" }
+    end
+
+    def locations
+      [ Pathname.new("#{Rails.root}/app/forms"),
+        Pathname.new("#{__dir__}/templates") ]
     end
 
   end
