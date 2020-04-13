@@ -50,7 +50,7 @@ module TemplateForm
         options:        options,
         html_options:   html_options,
 
-        errors:         builder.object.errors,
+        errors:         errors,
 
         group_method:        group_method,
         group_label_method:  group_label_method,

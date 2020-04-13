@@ -10,7 +10,7 @@
     <div class="field">
       <div class="control">
         <%- options[:class] << ' input' %>
-        <%- options[:class] << ' is-danger' if errors[attribute_name].any? %>
+        <%- options[:class] << ' is-danger' if errors[attribute_name].present? %>
         <%= text_field attribute_name, options %>
       </div>
 
@@ -18,7 +18,7 @@
         <p class="help"><%= hint_text %></p>
       <%- end %>
 
-      <%- if errors[attribute_name].any? %>
+      <%- if errors[attribute_name].present? %>
         <p class="help is-danger"><%= errors.full_messages_for(attribute_name).to_sentence %></p>
       <%- end %>
     </div>

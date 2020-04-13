@@ -37,7 +37,7 @@ module TemplateForm
         hint_text:      hint_text,
 
         options:        options,
-        errors:         builder.object.errors
+        errors:         errors
       ).html_safe
     end
 
@@ -57,6 +57,10 @@ module TemplateForm
 
       options
     ]
+
+    def errors
+      builder.object ? builder.object.errors : {}
+    end
 
     def template
       Tilt.new template_file

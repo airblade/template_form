@@ -48,7 +48,7 @@ module TemplateForm
         options:        options,
         html_options:   html_options,
 
-        errors:         builder.object.errors,
+        errors:         errors,
 
         value_method:   value_method,
         text_method:    text_method
