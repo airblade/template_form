@@ -8,7 +8,11 @@ module TemplateForm
   end
 
   def self.form_type
-    :bulma
+    @form_type || :bulma
+  end
+
+  def self.form_type=(val)
+    @form_type = val
   end
 
   private
