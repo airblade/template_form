@@ -16,7 +16,6 @@ module TemplateForm
       @label_options = Hash.new { |h,k| h[k] = '' }.update(options.delete(:label_options) || {})
 
       @hint_text = options.delete(:hint) || ''
-      @hint_options = Hash.new { |h,k| h[k] = '' }.update(options.delete(:hint_options) || {})
 
       data_attributes = (options.delete(:data) || {}).transform_keys { |k| "data-#{k}" }
 
@@ -37,7 +36,6 @@ module TemplateForm
         label_options:  label_options,
 
         hint_text:      hint_text,
-        hint_options:   hint_options,
 
         options:        options,
         errors:         builder.object.errors
@@ -57,7 +55,6 @@ module TemplateForm
       label_options
 
       hint_text
-      hint_options
 
       options
     ]
