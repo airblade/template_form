@@ -26,7 +26,6 @@ module TemplateForm
 
 
     def render
-      template = Tilt.new template_file
       template.render(
         builder,
         attribute_name: attribute_name,
@@ -59,6 +58,9 @@ module TemplateForm
       options
     ]
 
+    def template
+      Tilt.new template_file
+    end
 
     def template_file
       name = self.class.name.demodulize.underscore  # TemplateForm::TextInput -> text_input

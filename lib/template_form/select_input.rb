@@ -34,7 +34,6 @@ module TemplateForm
     end
 
     def render
-      template = Tilt.new template_file
       template.render(
         builder,
         attribute_name: attribute_name,
