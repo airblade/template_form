@@ -27,6 +27,8 @@ module TemplateForm
         (@object.respond_to?(:type_for_attribute) && @object.type_for_attribute(attribute_name).type) ||
         :string
 
+      options[:type] ||= 'password' if attribute_name.match /password/
+
       input_for(attribute_type).new(self, attribute_name, options).render
     end
 
