@@ -10,7 +10,7 @@ module TemplateForm
       @form_type = options.delete(:form_type) || builder.form_type
 
       # Use the `:label` option to override the default label text.
-      # Use `label: false` to indicate no label should be shown (check `show_label` in the template).
+      # Use `label: false` to indicate no label should be shown (check `has_label` in the template).
       @has_label = !(options.has_key?(:label) && options[:label] == false)
       @label_text = options.delete(:label) || ''
       @label_options = Hash.new { |h,k| h[k] = '' }.update(options.delete(:label_options) || {})
