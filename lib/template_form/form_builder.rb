@@ -32,6 +32,12 @@ module TemplateForm
       input_for(attribute_type).new(self, attribute_name, options).render
     end
 
+
+    def hidden(attribute_name, options = {})
+      hidden_field attribute_name, options
+    end
+
+
     private
 
     def input_for(attribute_type)
