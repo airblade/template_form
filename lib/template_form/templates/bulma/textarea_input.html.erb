@@ -1,0 +1,24 @@
+<div class="field <%= options.delete(:field_class) %>">
+
+  <% if has_label %>
+    <%- label_options[:class] << ' label' %>
+    <%- label_options[:class] << ' required' if options.delete(:required) %>
+    <%= label attribute_name, label_text, label_options %>
+  <% end %>
+
+  <div class="control">
+    <%- options[:class] << ' textarea' %>
+    <%- options[:class] << ' is-danger' if errors[attribute_name].present? %>
+    <%= text_area attribute_name, options %>
+  </div>
+
+  <%- if hint_text.present? %>
+    <p class="help"><%= hint_text %></p>
+  <%- end %>
+
+  <%- if errors[attribute_name].present? %>
+    <p class="help is-danger"><%= errors.full_messages_for(attribute_name).to_sentence %></p>
+  <%- end %>
+
+</div>
+

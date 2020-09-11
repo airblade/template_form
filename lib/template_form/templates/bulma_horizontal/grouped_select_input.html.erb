@@ -3,17 +3,27 @@
   <% if has_label %>
     <div class="field-label <%= options.delete(:field_label_class) || 'is-normal' %>">
       <%- label_options[:class] << ' label' %>
-      <%- label_options[:class] << ' required' if options.delete(:required) %>
+      <%- label_options[:class] << ' required' if html_options.delete(:required) %>
       <%= label attribute_name, label_text, label_options %>
     </div>
   <% end %>
 
   <div class="field-body">
-    <div class="field">
+    <div class="field <%= options.delete(:field_body_field_class) %>">
       <div class="control <%= options.delete(:control_class) %>">
-        <%- options[:class] << ' input' %>
-        <%- options[:class] << ' is-danger' if errors[attribute_name].present? %>
-        <%= text_field attribute_name, options %>
+        <%- html_options[:class] << ' select' %>
+        <%- html_options[:class] << ' is-danger' if errors[attribute_name].present? %>
+        <div class="<%= html_options[:class] %>">
+          <%= grouped_collection_select(
+                attribute_name,
+                collection,
+                group_method,
+                group_label_method,
+                option_key_method,
+                option_value_method,
+                options,
+                html_options) %>
+        </div>
       </div>
 
       <%- if hint_text.present? %>

@@ -9,6 +9,11 @@
   <% end %>
 
   <div class="field-body">
+    <%#
+      Use an extra nested field so the help text appears where expected
+      rather than as another addon.
+      https://github.com/jgthms/bulma/issues/640#issuecomment-415231212
+    %>
     <div class="field">
       <div class="control <%= options.delete(:control_class) %>">
         <%- options[:class] << ' input' %>
@@ -27,3 +32,4 @@
   </div>
 
 </div>
+
