@@ -163,15 +163,15 @@ end
 
 Template Form looks up the type for the attribute, falling back to `:string` if it can't find one.  Then it uses the corresponding form input.
 
-|--|--|
-| Attribute type | Form input |
-| `:string` | `TextInput` |
-| `:text` | `TextareaInput` |
-| `:date` | `DateInput` |
-| `:boolean` | `CheckboxInput` |
-| `:file` | `FileInput` |
-| `:select` | `SelectInput` |
-| `:grouped_select` | `GroupedSelectInput` |
+ Attribute type | Form input
+--|--
+ `:string` | `TextInput`
+ `:text` | `TextareaInput`
+ `:date` | `DateInput`
+ `:boolean` | `CheckboxInput`
+ `:file` | `FileInput`
+ `:select` | `SelectInput`
+ `:grouped_select` | `GroupedSelectInput`
 
 You can specify a type to use with `:as`, e.g. `<%= f.input :reason, as: :text %>`.
 
