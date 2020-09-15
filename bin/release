@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-gem_push=no bundle exec rake release
-
