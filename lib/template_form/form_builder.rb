@@ -1,3 +1,5 @@
+require 'action_pack'
+require 'action_view'
 require 'template_form/errors'
 require 'template_form/base_input'
 require 'template_form/checkbox_input'
@@ -9,7 +11,7 @@ require 'template_form/date_input'
 require 'template_form/file_input'
 
 module TemplateForm
-  class FormBuilder < ActionView::Helpers::FormBuilder
+  class FormBuilder < ::ActionView::Helpers::FormBuilder
 
     attr_reader :form_type
 
@@ -27,7 +29,7 @@ module TemplateForm
         (@object.respond_to?(:type_for_attribute) && @object.type_for_attribute(attribute_name).type) ||
         :string
 
-      options[:type] ||= 'password' if attribute_name.match /password/
+      options[:type] ||= 'password' if attribute_name.match(/password/)
 
       input_for(attribute_type).new(self, attribute_name, options).render
     end
