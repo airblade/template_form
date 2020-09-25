@@ -26,9 +26,8 @@ module TemplateForm
 
       data_attributes = (options.delete(:data) || {}).transform_keys { |k| "data-#{k}" }
 
-      @options = options.select { |k,_| OPTION_KEYS.include? k }
+      @options, @html_options = options.partition { |k,_| OPTION_KEYS.include? k }.map(&:to_h)
 
-      @html_options = options.reject { |k,_| OPTION_KEYS.include? k }
       @html_options.merge! data_attributes
       @html_options[:class] ||= ''
     end
