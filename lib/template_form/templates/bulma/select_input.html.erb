@@ -6,7 +6,7 @@
     <%= label attribute_name, label_text, label_options %>
   <% end %>
 
-  <div class="control <%= options.delete(:control_class) %>">
+  <div class="control <%= html_options.delete(:control_class) %>">
     <%- html_options[:class] << ' select' %>
     <%- html_options[:class] << ' is-danger' if errors[attribute_name].present? %>
     <div class="<%= html_options[:class] %>">

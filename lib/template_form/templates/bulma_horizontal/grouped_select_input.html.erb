@@ -9,8 +9,8 @@
   <% end %>
 
   <div class="field-body">
-    <div class="field <%= options.delete(:field_body_field_class) %>">
-      <div class="control <%= options.delete(:control_class) %>">
+    <div class="field <%= html_options.delete(:field_body_field_class) %>">
+      <div class="control <%= html_options.delete(:control_class) %>">
         <%- html_options[:class] << ' select' %>
         <%- html_options[:class] << ' is-danger' if errors[attribute_name].present? %>
         <div class="<%= html_options[:class] %>">
