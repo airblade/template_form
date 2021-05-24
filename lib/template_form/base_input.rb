@@ -67,9 +67,18 @@ module TemplateForm
     end
 
     def template_file
-      name = self.class.name.demodulize.underscore  # TemplateForm::TextInput -> text_input
-      f = paths(name).map { |p| Pathname.glob(p).first }.detect &:itself
-      f or raise TemplateForm::MissingTemplateError, "No template found at: #{paths(name).join ', '}"
+      detect_template_path(template_name) or
+        raise TemplateForm::MissingTemplateError,
+        "No template found at: #{paths(template_name).join ', '}"
+    end
+
+    # TemplateForm::TextInput -> text_input
+    def template_name
+      self.class.name.demodulize.underscore
+    end
+
+    def detect_template_path(name)
+      paths(name).map { |p| Pathname.glob(p).first }.detect &:itself
     end
 
     def paths(name)
