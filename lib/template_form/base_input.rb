@@ -6,6 +6,7 @@ module TemplateForm
     def initialize(builder, attribute_name, options)
       @builder = builder
       @attribute_name = attribute_name
+      @view = options.delete(:view)
 
       @form_type = options.delete(:form_type) || builder.form_type
 
@@ -37,7 +38,8 @@ module TemplateForm
         hint_text:      hint_text,
 
         options:        options,
-        errors:         errors
+        errors:         errors,
+        view:           view
       ).html_safe
     end
 
@@ -48,6 +50,7 @@ module TemplateForm
       form_type
       builder
       attribute_name
+      view
 
       has_label
       label_text

@@ -8,6 +8,7 @@ module TemplateForm
     def initialize(builder, attribute_name, options)
       @builder = builder
       @attribute_name = attribute_name
+      @view = options.delete(:view)
 
       @form_type = options.delete(:form_type) || builder.form_type
 
@@ -54,7 +55,9 @@ module TemplateForm
         group_method:        group_method,
         group_label_method:  group_label_method,
         option_key_method:   option_key_method,
-        option_value_method: option_value_method
+        option_value_method: option_value_method,
+
+        view: view
       ).html_safe
     end
 
@@ -62,6 +65,7 @@ module TemplateForm
 
     attr_reader *%i[
       collection
+      view
 
       html_options
 

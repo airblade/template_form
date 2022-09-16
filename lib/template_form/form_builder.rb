@@ -22,6 +22,7 @@ module TemplateForm
       # associated record, the second and subsequent ones have the
       # correct form type.
       @form_type = options[:form_type] || TemplateForm.form_type
+      @view = options[:view]
     end
 
     def input(attribute_name, options = {})
@@ -30,6 +31,8 @@ module TemplateForm
         :string
 
       options[:type] ||= 'password' if attribute_name.match(/password/)
+
+      options.merge! view: @view
 
       input_for(attribute_type).new(self, attribute_name, options).render
     end

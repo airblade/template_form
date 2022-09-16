@@ -159,6 +159,13 @@ def render
 end
 ```
 
+You also have access to the `view` in which the template is contained.  This is handy if you need to call methods on the view inside your template.  For example, translating values for data attributes.
+
+```erb
+<div data-controller="foo" data-foo-show-value=view.translate("foo.show")>
+</div>
+```
+
 ### Attribute types and form inputs
 
 Template Form looks up the type for the attribute, falling back to `:string` if it can't find one.  Then it uses the corresponding form input.
