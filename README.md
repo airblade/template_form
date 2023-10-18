@@ -111,6 +111,8 @@ They should have these names:
 
 Use whatever extension goes with your template engine.
 
+You can have several variations of a template, for example a [text input with inline add-on](https://tailwindui.com/components/application-ui/forms/input-groups#component-3620fb44e0a49ebce229526254018508).  First, write your template at `<BASE>_<VARIANT>.html.erb`; say, `text_input_inline_add_on.html.erb`.  Then use a `with: <VARIANT>` option in your view, e.g. `<%= form.input :name, with: :inline_add_on %>`.
+
 Inside each template you can use the normal Rails form helpers.  Here's the template for Bulma's [text input](https://github.com/airblade/template_form/blob/master/lib/template_form/templates/bulma/text_input.html.erb):
 
 ```erb

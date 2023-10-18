@@ -77,7 +77,10 @@ module TemplateForm
 
     # TemplateForm::TextInput -> text_input
     def template_name
-      self.class.name.demodulize.underscore
+      @template_name ||= [
+        self.class.name.demodulize.underscore,
+        options.delete(:with)
+      ].compact.join('_')
     end
 
     def detect_template_path(name)
