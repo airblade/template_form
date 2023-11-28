@@ -32,7 +32,7 @@ module TemplateForm
 
       options[:type] ||= 'password' if attribute_name.match(/password/)
 
-      options.merge! view: @view
+      options.merge! view: @view if @view
 
       input_for(attribute_type).new(self, attribute_name, options).render
     end

@@ -6,6 +6,7 @@ class TextInputTest < Minitest::Test
     @template = Object.new.tap do |template|
       template.extend ActionView::Helpers::FormHelper
       template.extend ActionView::Helpers::FormOptionsHelper
+      template.extend ActionView::Helpers::FormTagHelper
       # template.extend ActionView::Helpers::TagHelper
       # template.extend ActionView::Context
     end

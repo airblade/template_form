@@ -69,10 +69,11 @@ class FormBuilderTest < Minitest::Test
 
 
   def test_input_options
-    builder = TestFormBuilder.new(nil, nil, @template, {})
+    view = Object.new
+    builder = TestFormBuilder.new(nil, nil, @template, {view: view})
     input = builder.input :foo, as: :select, bar: 153
 
-    assert_equal({bar: 153}, input.options)
+    assert_equal({bar: 153, view: view}, input.options)
     refute input.options.has_key?(:as)
   end
 

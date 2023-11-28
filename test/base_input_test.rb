@@ -116,13 +116,15 @@ class BaseInputTest < Minitest::Test
 
 
   def test_render
+    view = Object.new
     builder_without_object = Struct.new(:object).new
     input = TemplateForm::BaseInput.new builder_without_object, :attr, {
       form_type: :bar,
       label: 'Label',
       label_options: {foo: 153},
       hint: 'Hint',
-      class: 'bar'
+      class: 'bar',
+      view: view
     }
 
     mock_template = Minitest::Mock.new
@@ -135,7 +137,8 @@ class BaseInputTest < Minitest::Test
         label_options: {foo: 153},
         hint_text: 'Hint',
         options: {class: 'bar'},
-        errors: {}
+        errors: {},
+        view: view
       }
     ]
 
