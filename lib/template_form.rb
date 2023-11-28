@@ -15,6 +15,14 @@ module TemplateForm
     @form_type = val
   end
 
+  def self.template_path
+    @template_path || Pathname.new("#{Rails.root}/app/forms")
+  end
+
+  def self.template_path=(val)
+    @template_path = Pathname.new(val)
+  end
+
   private
 
   def self.noop_field_error_proc

@@ -92,7 +92,7 @@ module TemplateForm
     end
 
     def locations
-      [ Pathname.new("#{Rails.root}/app/forms"),
+      [ TemplateForm.template_path,
         Pathname.new("#{__dir__}/templates") ]
     end
 

@@ -2,9 +2,9 @@
 
 Template Form makes defining the HTML your form inputs generate as simple as possible: you just write it out.  Most other form builders, e.g. Simple Form, add a layer of indirection and make you use their own DSL.
 
-Templates are grouped so you can for example define both vertical and horizontal forms, or Bootstrap and Tailwind forms, in the same Rails app.
+Templates are namespaced so you can define different HTML for different situations, e.g. stacked or horizontal, in the same Rails app.
 
-Right now Template Form includes templates for [Bulma](https://bulma.io/documentation/form/) but in time it will include templates for all the popular CSS frameworks.
+Right now Template Form includes templates for [Bulma](https://bulma.io/documentation/form/) because those are defined by Bulma.  For Tailwind, or Bootstrap, you define your inputs yourself.
 
 Template Form works with all template engines supported by [Tilt](https://github.com/rtomayko/tilt).
 
@@ -98,7 +98,7 @@ And then you will get this HTML instead:
 
 ### Defining your templates
 
-Your templates live at `/app/forms/<FORM TYPE>/` where `<FORM TYPE>` is a name that makes sense to you, and the value that you use with the `:form_type` option to `#template_form_with`.
+Your templates live at `TemplateForm.template_path` which defaults to `/app/forms/<FORM TYPE>/` where `<FORM TYPE>` is a name that makes sense to you, and the value that you use with the `:form_type` option to `#template_form_with`.
 
 They should have these names:
 

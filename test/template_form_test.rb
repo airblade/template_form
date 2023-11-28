@@ -22,4 +22,8 @@ class TemplateFormTest < Minitest::Test
   def test_field_error_proc
     assert_equal 'html', TemplateForm.field_error_proc.call('html', Object.new)
   end
+
+  def test_template_path
+    assert_equal Pathname.new(__dir__)/'app'/'forms', TemplateForm.template_path
+  end
 end
