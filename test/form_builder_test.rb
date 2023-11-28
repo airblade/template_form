@@ -16,7 +16,6 @@ class FormBuilderTest < Minitest::Test
     builder = TemplateForm::FormBuilder.new(:foo, Object.new, @template, {})
     assert_equal TemplateForm.form_type, builder.form_type
 
-    options = { form_type: :bar }
     builder = TemplateForm::FormBuilder.new(:foo, Object.new, @template, {form_type: :bar})
     assert_equal :bar, builder.form_type
   end
@@ -49,7 +48,7 @@ class FormBuilderTest < Minitest::Test
 
   def test_input_as
     builder = TestFormBuilder.new(nil, nil, @template, {})
-    input = builder.input :foo, as: :select
+    builder.input :foo, as: :select
 
     assert_equal :select, builder.attribute_type
   end

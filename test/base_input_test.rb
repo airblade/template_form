@@ -143,7 +143,7 @@ class BaseInputTest < Minitest::Test
     ]
 
     input.stub :template, mock_template do
-      output = input.render
+      input.render
     end
   end
 
