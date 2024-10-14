@@ -3,7 +3,7 @@ require 'template_form/form_builder'
 module TemplateForm
   module FormHelper
 
-    def template_form_with(model: nil, scope: nil, url: nil, format: nil, **options, &block)
+    def template_form_with(model: false, scope: nil, url: nil, format: nil, **options, &block)
       options[:builder] = TemplateForm::FormBuilder
       options[:view] = self
 
