@@ -1,7 +1,7 @@
-<div class="field is-horizontal <%= options.delete(:field_class) %>">
+<div class="field is-horizontal <%= html_options.delete(:field_class) %>">
 
   <% if has_label %>
-    <div class="field-label <%= options.delete(:field_label_class) || 'is-normal' %>">
+    <div class="field-label <%= html_options.delete(:field_label_class) || 'is-normal' %>">
       <%- label_options[:class] << ' label' %>
       <%- label_options[:class] << ' required' if html_options.delete(:required) %>
       <%= label attribute_name, label_text, label_options %>
