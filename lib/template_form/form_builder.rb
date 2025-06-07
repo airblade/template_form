@@ -56,6 +56,7 @@ module TemplateForm
       when :file    then FileInput
       when :select  then SelectInput
       when :grouped_select then GroupedSelectInput
+      else raise ArgumentError, "Unknown attribute type #{attribute_type}"
       end
     end
 
