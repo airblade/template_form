@@ -18,12 +18,9 @@ module TemplateForm
 
     def initialize(...)
       super
-      # Do not remove `:form_type` from `options`.  It has to stay so
-      # when `fields_for()` instantiates a new form builder for each
-      # associated record, the second and subsequent ones have the
-      # correct form type.
-      @form_type = options[:form_type] || TemplateForm.form_type
-      @view = options[:view]
+      parent_options = options[:parent_builder]&.options
+      @form_type = options[:form_type] || parent_options&.dig(:form_type) || TemplateForm.form_type
+      @view = options[:view] || parent_options&.dig(:view)
     end
 
     def input(attribute_name, options = {})
