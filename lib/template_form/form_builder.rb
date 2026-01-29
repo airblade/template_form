@@ -16,7 +16,7 @@ module TemplateForm
 
     attr_reader :form_type
 
-    def initialize(*)
+    def initialize(...)
       super
       # Do not remove `:form_type` from `options`.  It has to stay so
       # when `fields_for()` instantiates a new form builder for each
