@@ -2,8 +2,8 @@
 
   <% if has_label %>
     <div class="field-label">
-      <%- label_options[:class] << ' label' %>
-      <%- label_options[:class] << ' required' if options.delete(:required) %>
+      <%- label_options[:class] += ' label' %>
+      <%- label_options[:class] += ' required' if options.delete(:required) %>
       <%= label attribute_name, label_text, label_options %>
     </div>
   <% end %>
