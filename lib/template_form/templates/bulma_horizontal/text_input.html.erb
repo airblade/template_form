@@ -1,18 +1,16 @@
-<div class="field is-horizontal <%= options.delete(:field_class) %>">
+<div class="<%= view.class_names("field", "is-horizontal", options.delete(:field_class)) %>">
 
   <% if has_label %>
-    <div class="field-label <%= options.delete(:field_label_class) || 'is-normal' %>">
-      <%- label_options[:class] += ' label' %>
-      <%- label_options[:class] += ' required' if options.delete(:required) %>
+    <div class="<%= view.class_names("field-label", options.delete(:field_label_class) { "is-normal" }) %>">
+      <%- label_options[:class] = view.class_names(label_options[:class], "label", "required" => options.delete(:required)) %>
       <%= label attribute_name, label_text, label_options %>
     </div>
   <% end %>
 
   <div class="field-body">
     <div class="field">
-      <div class="control <%= options.delete(:control_class) %>">
-        <%- options[:class] += ' input' %>
-        <%- options[:class] += ' is-danger' if errors[attribute_name].present? %>
+      <div class="<%= view.class_names("control", options.delete(:control_class)) %>">
+        <%- options[:class] = view.class_names(options[:class], "input", "is-danger" => errors[attribute_name].present?) %>
         <%= text_field attribute_name, options %>
       </div>
 

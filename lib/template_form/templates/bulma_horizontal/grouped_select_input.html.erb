@@ -1,19 +1,16 @@
-<div class="field is-horizontal <%= html_options.delete(:field_class) %>">
+<div class="<%= view.class_names("field", "is-horizontal", html_options.delete(:field_class)) %>">
 
   <% if has_label %>
-    <div class="field-label <%= html_options.delete(:field_label_class) || 'is-normal' %>">
-      <%- label_options[:class] += ' label' %>
-      <%- label_options[:class] += ' required' if html_options.delete(:required) %>
+    <div class="<%= view.class_names("field-label", html_options.delete(:field_label_class) { "is-normal" }) %>">
+      <%- label_options[:class] = view.class_names(label_options[:class], "label", "required" => html_options.delete(:required)) %>
       <%= label attribute_name, label_text, label_options %>
     </div>
   <% end %>
 
   <div class="field-body">
-    <div class="field <%= html_options.delete(:field_body_field_class) %>">
-      <div class="control <%= html_options.delete(:control_class) %>">
-        <%- html_options[:class] += ' select' %>
-        <%- html_options[:class] += ' is-danger' if errors[attribute_name].present? %>
-        <div class="<%= html_options[:class] %>">
+    <div class="<%= view.class_names("field", html_options.delete(:field_body_field_class)) %>">
+      <div class="<%= view.class_names("control", html_options.delete(:control_class)) %>">
+        <div class="<%= view.class_names(html_options[:class], "select", "is-danger" => errors[attribute_name].present?) %>">
           <%= grouped_collection_select(
                 attribute_name,
                 collection,

@@ -1,16 +1,15 @@
-<div class="field is-horizontal <%= options.delete(:field_class) %>">
+<div class="<%= view.class_names("field", "is-horizontal", options.delete(:field_class)) %>">
 
   <% if has_label %>
     <div class="field-label">
-      <%- label_options[:class] += ' label' %>
-      <%- label_options[:class] += ' required' if options.delete(:required) %>
+      <%- label_options[:class] = view.class_names(label_options[:class], "label", "required" => options.delete(:required)) %>
       <%= label attribute_name, label_text, label_options %>
     </div>
   <% end %>
 
   <div class="field-body">
     <div class="field">
-      <div class="control <%= options.delete(:control_class) %>">
+      <div class="<%= view.class_names("control", options.delete(:control_class)) %>">
         <label class="checkbox">
           <%= check_box attribute_name, options %>
         </label>

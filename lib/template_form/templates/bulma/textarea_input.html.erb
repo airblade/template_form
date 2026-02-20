@@ -1,14 +1,12 @@
-<div class="field <%= options.delete(:field_class) %>">
+<div class="<%= view.class_names("field", options.delete(:field_class)) %>">
 
   <% if has_label %>
-    <%- label_options[:class] += ' label' %>
-    <%- label_options[:class] += ' required' if options.delete(:required) %>
+    <%- label_options[:class] = view.class_names(label_options[:class], "label", "required" => options.delete(:required)) %>
     <%= label attribute_name, label_text, label_options %>
   <% end %>
 
   <div class="control">
-    <%- options[:class] += ' textarea' %>
-    <%- options[:class] += ' is-danger' if errors[attribute_name].present? %>
+    <%- options[:class] = view.class_names(options[:class], "textarea", "is-danger" => errors[attribute_name].present?) %>
     <%= text_area attribute_name, options %>
   </div>
 
